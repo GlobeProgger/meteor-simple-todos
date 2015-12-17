@@ -28,10 +28,11 @@ if (Meteor.isClient) {
       event.preventDefault();
 
       var text = event.target.text.value;
-      Meteor.call("addTask", text);
+      if (text != "") {
+        Meteor.call("addTask", text);
+      } 
 
       event.target.text.value = "";
-
     },
     "change .hide-completed": function (event) {
       Session.set("hideCompleted", event.target.checked);
